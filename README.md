@@ -1,1 +1,1 @@
-# Catalog_-of_things
+# Catalog of Things
