@@ -1,8 +1,8 @@
-require_relative './source'
+require_relative '../source'
 
 describe Source do
   before :each do
-    @source = Source.new(1, Netflix)
+    @source = Source.new(1, 'Netflix')
   end
 
   context '#new' do
@@ -14,7 +14,7 @@ describe Source do
   context 'Property name' do
     it 'Should be able to read' do
       name = @source.name
-      expect(name).to eql(Netflix)
+      expect(name).to eql('Netflix')
     end
 
     it 'Should not be able to be written' do
@@ -32,7 +32,7 @@ describe Source do
   context 'Property items' do
     it 'Should not be accessible' do
       expect { @source.items }.to raise_error(NoMethodError)
-      expeect { @source.items = [] }.to raise_error(NoMethodError)
+      expect { @source.items = [] }.to raise_error(NoMethodError)
     end
   end
 
@@ -42,7 +42,7 @@ describe Source do
 
       items = @source.add_item(item)
 
-      expect(items.length).to eq(1)
+      expect(items.length).to be 1
     end
 
     it 'Should add multiple items to source items array' do
@@ -53,10 +53,10 @@ describe Source do
       @source.add_item(item1, item2)
       items = @source.add_item(item3)
 
-      expect(items.length).to eq(3)
+      expect(items.length).to be 3
     end
 
-    it 'Item should have genre property equal to self' do
+    it 'Item should have source property equal to self' do
       item = double('Item', source: nil)
 
       @source.add_item(item)
@@ -70,7 +70,7 @@ describe Source do
       @source.add_item(item)
       items = @source.add_item(item)
 
-      expect(items.length).to eq(1)
+      expect(items.length).to be 1
     end
   end
 end
