@@ -40,6 +40,6 @@ class Item
   private
 
   def can_be_archived?
-    (Date.today - @publish_date) > 10
+    ((Date.today - @publish_date) / 365).to_f > 10
   end
 end
