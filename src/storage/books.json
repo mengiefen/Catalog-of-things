@@ -1,0 +1,26 @@
+[
+  {
+    "json_class": "Book",
+    "id": 159,
+    "publisher": "adads",
+    "cover_state": "dasd",
+    "date": "2022-05-25",
+    "archived": false
+  },
+  {
+    "json_class": "Book",
+    "id": 539,
+    "publisher": "as",
+    "cover_state": "dasd",
+    "date": "2022-05-25",
+    "archived": false
+  },
+  {
+    "json_class": "Book",
+    "id": 230,
+    "publisher": "asd",
+    "cover_state": "dsad",
+    "date": "2022-05-25",
+    "archived": false
+  }
+]
