@@ -11,7 +11,7 @@ class IoHandler
   end
 
   def add_book
-    puts '------- Adding Book -------'
+    puts '-------  Adding Book  -------'
     print 'Who is the Publisher? : '
     publisher = gets.chomp
     print 'Specify Book Cover State: '
@@ -57,10 +57,10 @@ class IoHandler
   end
 
   def add_label
-    puts '---Adding New Label ---'
-    print 'Title: '
+    puts '--- Adding New Label ---'
+    print ' Please enter the Title: '
     title = gets.chomp
-    print 'Color: '
+    print 'Enter the Color: '
     color = gets.chomp
     @labels << Label.new(title, color)
   end
