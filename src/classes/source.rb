@@ -11,7 +11,7 @@ class Source
 
   def add_item(item)
     if item.instance_of?(Item)
-      @items  << item
+      @items << item
       item.add_source(self)
     else
       'Please insert a proper item'
