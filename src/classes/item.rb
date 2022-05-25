@@ -3,8 +3,8 @@ require 'date'
 class Item
   attr_reader :genre, :author, :source, :label
 
-  def initialize(date, archived: false)
-    @id = Random.rand(1..1000)
+  def initialize(id, date, archived: false)
+    @id = id || Random.rand(1..1000)
     @publish_date = date
     @archived = archived
     @genre = genre
@@ -14,7 +14,7 @@ class Item
   end
 
   def move_to_archive
-    @archive = true if can_be_archived? == true
+    @archived = true if can_be_archived? == true
   end
 
   def genre=(genre)
@@ -40,6 +40,6 @@ class Item
   private
 
   def can_be_archived?
-    ((Date.today - Date.new(@publish_date)) / 365).to_i > 10
+    ((Date.today - Date.parse(@publish_date)) / 365).to_i > 10
   end
 end

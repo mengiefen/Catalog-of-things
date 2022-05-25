@@ -3,8 +3,8 @@ require_relative '../src//classes/book'
 
 describe Label do
   before :each do
-    @label = Label.new('BookTitle', 'BookColor')
-    @book = Book.new('Publisher', 'Bad')
+    @label = Label.new('BookTitle', 'BookColor', rand(1..1000))
+    @book = Book.new('Publisher', 'Bad', rand(1..1000))
     @book.label = @label
   end
 

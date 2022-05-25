@@ -2,8 +2,8 @@ require_relative '../src/classes/book'
 
 describe Book do
   before :each do
-    @book1 = Book.new('Publisher1', 'Cover-State')
-    @book2 = Book.new('Publisher2', 'bad')
+    @book1 = Book.new('Publisher1', 'Cover-State', rand(1..1000))
+    @book2 = Book.new('Publisher2', 'bad', rand(1..1000))
   end
 
   context 'creating #new book' do
@@ -25,6 +25,6 @@ describe Book do
   end
 
   it 'should return true when #new move_to_archive called' do
-    expect(@book2.move_to_archive).to eq true
+    expect(@book2.move_to_archive).to be_truthy
   end
 end
