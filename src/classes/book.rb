@@ -1,11 +1,11 @@
-require './item'
+require_relative 'item'
 require 'date'
 
 class Book < Item
   attr_accessor :publisher, :cover_state
 
-  def initialize(publisher, cover_state, archived: false, date: Date.today.to_s)
-    super(date, archived: archived)
+  def initialize(publisher, cover_state, id, archived: false, date: Date.today.to_s)
+    super(id, date, archived: archived)
     @publisher = publisher
     @cover_state = cover_state
   end
@@ -28,6 +28,6 @@ class Book < Item
   end
 
   def self.json_create(object)
-    Book.new(object['publisher'], object['cover_state'])
+    Book.new(object['publisher'], object['cover_state'], object['id'])
   end
 end
