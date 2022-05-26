@@ -27,7 +27,7 @@ class Item
     author.items.push(self) unless author.items.include?(self)
   end
 
-  def source=(source)
+  def add_source(source)
     @source = source
     source.items.push(self) unless source.items.include?(self)
   end
@@ -40,6 +40,6 @@ class Item
   private
 
   def can_be_archived?
-    ((Date.today - Date.new(@publish_date)) / 365).to_i > 10
+    @publish_date.to_i > 10
   end
 end
