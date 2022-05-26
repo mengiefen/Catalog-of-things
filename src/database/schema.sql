@@ -1,4 +1,4 @@
-CREATE TABLE book(
+CREATE TABLE music_album(
   id INT GENERATED ALWAYS AS IDENTITY,
   on_spotify BOOLEAN NOT NULL,
   PRIMARY KEY (id),
