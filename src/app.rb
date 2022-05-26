@@ -1,6 +1,7 @@
-require_relative './Classes/movie'
-require_relative './Classes/db'
+require_relative './classes/movie'
+require_relative './classes/db'
 require_relative './modules/app_module'
+require_relative './modules/io_handler'
 
 class App
   include Appfunctions
@@ -23,6 +24,7 @@ class App
       'Exit'
     ]
     @run_app = false
+    @io = IoHandler.new
   end
 
   def run
@@ -45,7 +47,7 @@ class App
 
     case selected_option
     when 1
-      '1'
+      @io.list_all_books
     when 2
       '2'
     when 3
@@ -61,7 +63,7 @@ class App
     when 8
       show_sources
     when 9
-      '9'
+      @io.add_book
     when 10
       '10'
     when 11
@@ -69,6 +71,7 @@ class App
     when 12
       '13'
     when 13
+      @io.save
       exit!
     end
   end
@@ -77,7 +80,7 @@ class App
 
   def list_options
     puts "\n"
-    puts 'Please choose an option by enterin a number'
+    puts 'Please choose an option by entering a number'
     @options.each_with_index { |option, index| puts "#{index + 1} - #{option}" }
     puts "\n"
   end

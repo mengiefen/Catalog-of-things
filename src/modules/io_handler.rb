@@ -65,8 +65,7 @@ class IoHandler
     @labels << Label.new(title, color)
   end
 
-  def quit
+  def save
     save_to_storage
-    exit
   end
 end
