@@ -1,10 +1,11 @@
-require_relative './item'
+require_relative 'item'
 
 class Movie < Item
-  attr_reader :publish_date, :silent
+  attr_reader :id
+  attr_accessor :publish_date, :silent
 
   def initialize(id, publish_date, silent: false)
-    super(publish_date)
+    super(id, publish_date)
     @silent = silent
   end
 
