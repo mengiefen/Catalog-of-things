@@ -4,7 +4,7 @@ class Movie < Item
   attr_reader :publish_date, :silent
 
   def initialize(id, publish_date, silent: false)
-    super(id, publish_date)
+    super(publish_date)
     @silent = silent
   end
 

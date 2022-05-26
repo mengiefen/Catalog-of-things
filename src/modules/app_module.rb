@@ -1,40 +1,39 @@
 require_relative '../Classes/source'
 require_relative '../Classes/db'
 require_relative '../Classes/movie'
+require 'date'
 
-module CreateItems
-    include ShowItems
-    include PrivateMethods
+module Appfunctions
 
     def valid_date?(date)
-        return unless date.parse('yyyy-mm-dd')
-
-        puts 'Please enter a valid year'
-        date = gets.chomp
-        vali_date?(date)
-    end
+        date_format = '%Y-%m-%d'
+        DateTime.strptime(date, date_format)
+        true
+      rescue ArgumentError
+        false
+      end
 
     def create_movie
         source = create_source
-        puts "\nWhat was the publish date of  the movie? e. g. yyyy-mm-dd"
+        puts "\nWhat was the publish date of  the movie? e. g. 1996"
         date = gets.chomp
-        valid_date(date)
+        valid_date?(date)
         puts "\nIs the movie silent?"
         puts '1 - YES'
         puts '2 - NO'
         silent = gets.chomp.to_i
-        movie = Movie.new(date, silent: silent == 1)
+        id = Random.rand(1..100)
+        movie = Movie.new(id, date, silent)
         movie.add_source(source)
-        date = { 
+        data = { 
+            id: movie.id,
             publish_date: movie.publish_date,
-            silent: movie.silent ==1,
+            silent: movie.silent,
             source: movie.source.name
          }
-         @db.save(date, 'movies')
+         @db.save(data, 'movies')
     end
-end
 
-module PrivateMethods
     def create_source
         puts "\nSelect a source from the following list or 'a' to add a new source:"
         source_list = @db.get_all_data_of('sources')
@@ -50,9 +49,6 @@ module PrivateMethods
             Source.new(source_list[input.to_i]['name'])
         end
     end
-end
-
-module ShowItems
 
     def show_movies
         list = @db.get_all_data_of('movies')
@@ -71,7 +67,7 @@ module ShowItems
             puts "\nThere are no sources."
         else
             puts "\nSources:"
-            list.each_with_index { |source, index| pus "#{index} - #{source[name]}" }
+            list.each_with_index { |source, index| puts "#{index} - #{source}" }
         end
     end
 end

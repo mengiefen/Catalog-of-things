@@ -3,8 +3,8 @@ require 'json'
 class DB
   def initialize
     # Initialize database
-    @folder_path = './src/database'
-    Dir.mkdir(@folder_path) unless Dir.exist?(@folder_path)
+    @folder_path = '../src/storage/'
+    Dir.mkdir(@folder_path) unless File.exist?(@folder_path)
     @file_path = ''
     @file = ''
   end
