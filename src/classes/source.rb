@@ -1,16 +1,20 @@
-class Source
-  attr_reader :name
-  attr_accessor :id
+require_relative 'item'
 
-  def initialize(name)
-    @id = Random.rand(1..1000)
+class Source
+  attr_reader :items, :name
+
+  def initialize(name, id = Random.rand(1..100))
+    @id = id
     @name = name
     @items = []
   end
 
   def add_item(item)
-    item.source = self
-    @items << item unless item.include?(item)
-    @items
+    if item.instance_of?(Item)
+      @items << item
+      item.add_source(self)
+    else
+      'Please insert a proper item'
+    end
   end
 end
