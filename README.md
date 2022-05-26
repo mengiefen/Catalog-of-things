@@ -51,7 +51,7 @@ To get a local copy up and running follow these simple example steps.
     -  Then run `./main.rb` 
     -  Follow the interactive console instructions
   
-## Authors
+## Contributers
 
 👤 **Mengstu Fentaw**
 
@@ -77,7 +77,6 @@ To get a local copy up and running follow these simple example steps.
 - Twitter: [@HemersonForeste](https://twitter.com/HemersonForeste)
 - LinkedIn: [LinkedIn](https://linkedin.com/in/hemerson-foreste-890685197)
 
-## Contributers
 
 
 ## 📝 License
