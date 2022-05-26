@@ -37,6 +37,8 @@ class App
 
   private
 
+  # rubocop:disable Metrics/CyclomaticComplexity
+  # rubocop:disable Metrics/MethodLength
   def select_option
     list_options
     selected_option = gets.chomp.to_i
@@ -70,6 +72,8 @@ class App
       exit!
     end
   end
+  # rubocop:enable Metrics/CyclomaticComplexity
+  # rubocop:enable Metrics/MethodLength
 
   def list_options
     puts "\n"
