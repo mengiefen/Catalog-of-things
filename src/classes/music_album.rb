@@ -19,17 +19,6 @@ class MusicAlbum < Item
     new(*object['data'])
   end
 
-  def to_json(*args)
-    {
-      JSON.create_id => self.class.name,
-      'data' => [name]
-    }.to_json(*args)
-  end
-
-  def self.json_create(object)
-    new(*object['data'])
-  end
-
   private
 
   def can_be_archived?
