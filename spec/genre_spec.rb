@@ -21,7 +21,7 @@ describe Genre do
 
   it 'Should be able to add an item' do
     item = Item.new(Random.rand(1..1000), Time.now)
-    expect(@genre.items.length).to be.zero?
+    expect(@genre.items.length).to eq 0
     @genre.add_item(item)
     expect(@genre.items.length).to be == 1
   end
