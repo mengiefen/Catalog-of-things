@@ -12,4 +12,15 @@ class Genre
     @items << item
     item.genre = self
   end
+
+  def to_json(*args)
+    {
+      JSON.create_id => self.class.name,
+      'data' => [name]
+    }.to_json(*args)
+  end
+
+  def self.json_create(object)
+    new(*object['data'])
+  end
 end
