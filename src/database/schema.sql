@@ -19,8 +19,8 @@ CREATE TABLE item (
 
 CREATE TABLE book(
   id INT GENERATED ALWAYS AS IDENTITY,
-  item_id INT NOT NULL
   publisher VARCHAR(100) NOT NULL,
+  cover_state VARCHAR(100) NOT NULL,
   archived BOOLEAN NOT NULL,
   PRIMARY KEY (id),
   CONSTRAINT fk_book
