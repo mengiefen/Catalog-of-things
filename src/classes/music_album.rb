@@ -1,9 +1,9 @@
 require_relative '../classes/item'
 
 class MusicAlbum < Item
-  attr_accessor :on_spotify
+  attr_accessor :id, :publish_date, :on_spotify, :items
 
-  def initialize(id, publish_date, on_spotify: false)
+  def initialize(id, publish_date, on_spotify)
     super(id, publish_date)
     @on_spotify = on_spotify
   end
@@ -11,12 +11,14 @@ class MusicAlbum < Item
   def to_json(*args)
     {
       JSON.create_id => self.class.name,
-      'data' => [title, author]
+      id: @id,
+      publish_date: @publish_date,
+      on_spotify: @on_spotify
     }.to_json(*args)
   end
 
   def self.json_create(object)
-    new(*object['data'])
+    MusicAlbum.new(object['id'], object['publish_date'], object['on_spotify'])
   end
 
   private

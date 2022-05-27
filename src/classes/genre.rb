@@ -1,6 +1,6 @@
 class Genre
-  attr_reader :id, :items
-  attr_accessor :name
+  attr_reader :id
+  attr_accessor :name, :items
 
   def initialize(name)
     @id = Random.rand(1..1000)
@@ -16,11 +16,14 @@ class Genre
   def to_json(*args)
     {
       JSON.create_id => self.class.name,
-      'data' => [name]
+      name: @name,
+      items: @items
     }.to_json(*args)
   end
 
   def self.json_create(object)
-    new(*object['data'])
+    genre = Genre.new(object['name'])
+    genre.items = object['items']
+    genre
   end
 end

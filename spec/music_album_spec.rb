@@ -4,7 +4,7 @@ require_relative '../src/classes/item'
 
 describe MusicAlbum do
   before :each do
-    @album = MusicAlbum.new(Random.rand(1..1000), '2000-05-05', on_spotify: true)
+    @album = MusicAlbum.new(Random.rand(1..1000), '2000-05-05', true)
   end
 
   it 'Should be an instance of MusicAlbum' do
