@@ -51,13 +51,13 @@ class App
       print 'Press any key to continue...'
       gets
     when 2
-      '2'
+      @io.list_music_albums
     when 3
       show_movies
     when 4
       '4'
     when 5
-      '5'
+      @io.list_all_genres
     when 6
       @io.list_all_labels
       print 'Press any key to continue...'
@@ -69,7 +69,7 @@ class App
     when 9
       @io.add_book
     when 10
-      '10'
+      @io.add_music_album
     when 11
       create_movie
     when 12
