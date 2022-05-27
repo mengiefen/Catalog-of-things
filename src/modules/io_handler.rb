@@ -3,6 +3,7 @@ require_relative '../classes/book'
 require_relative '../classes/item'
 require_relative '../classes/genre'
 require_relative '../classes/music_album'
+require_relative '../modules/valid_date'
 require 'json'
 
 class IoHandler
@@ -101,7 +102,7 @@ class IoHandler
 
   def list_all_genres
     puts 'Genres:'
-    return puts 'There is no genres to show.' if @genre.empty?
+    return puts 'No genres to show 🚫' if @genre.empty?
 
     @genre.each_with_index do |genre, index|
       puts "[#{index + 1}] #{genre.name}"
@@ -130,7 +131,7 @@ class IoHandler
 
   def select_genre
     if @genre.empty?
-      puts 'There are no genres to select'
+      puts 'No genres to select 🚫'
       puts "\n"
       add_genre
       genre_index = 1
@@ -151,8 +152,7 @@ class IoHandler
 
   def add_music_album
     puts '-------  Adding music album  -------'
-    print 'Publish Date [YYYY-MM-DD]:'
-    publish_date = gets.chomp
+    publish_date = get_date('Publish Date [YYYY-MM-DD]:')
     print 'On Spotify [y/N]:'
     on_spotify = gets.chomp.downcase == 'y'
     puts "\n"
@@ -161,7 +161,7 @@ class IoHandler
     music_album = MusicAlbum.new(rand(1..1000), publish_date, on_spotify)
     music_album.genre = @genre[genre_index - 1]
     puts "\n"
-    puts 'Music album created successfully'
+    puts 'Music album created successfully ✅'
     @music_album << music_album
   end
 

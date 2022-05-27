@@ -39,8 +39,14 @@ class App
 
   private
 
+  def wait_for_input
+    print 'Press any key to continue...'
+    gets
+  end
+
   # rubocop:disable Metrics/CyclomaticComplexity
   # rubocop:disable Metrics/MethodLength
+
   def select_option
     list_options
     selected_option = gets.chomp.to_i
@@ -48,20 +54,20 @@ class App
     case selected_option
     when 1
       @io.list_all_books
-      print 'Press any key to continue...'
-      gets
+      wait_for_input
     when 2
       @io.list_music_albums
+      wait_for_input
     when 3
       show_movies
     when 4
       '4'
     when 5
       @io.list_all_genres
+      wait_for_input
     when 6
       @io.list_all_labels
-      print 'Press any key to continue...'
-      gets
+      wait_for_input
     when 7
       '7'
     when 8
@@ -70,6 +76,7 @@ class App
       @io.add_book
     when 10
       @io.add_music_album
+      wait_for_input
     when 11
       create_movie
     when 12
