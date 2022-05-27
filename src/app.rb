@@ -2,12 +2,18 @@ require_relative './classes/movie'
 require_relative './classes/db'
 require_relative './modules/app_module'
 require_relative './modules/io_handler'
+require_relative './classes/game'
+require_relative './classes/author'
+require_relative './data/author_data'
+require_relative './data/game_data'
 
 class App
   include Appfunctions
+  include GameData
 
   def initialize
     @db = DB.new
+    @games = read_games
     @options = [
       'List all books',
       'List all music albums',
@@ -55,7 +61,7 @@ class App
     when 3
       show_movies
     when 4
-      '4'
+      list_games
     when 5
       @io.list_all_genres
     when 6
@@ -73,14 +79,14 @@ class App
     when 11
       create_movie
     when 12
-      '13'
+      add_new_game
     when 13
       @io.save
       exit!
     end
   end
   # rubocop:enable Metrics/CyclomaticComplexity
-  # rubocop:enable Metrics/MethodLength
+  # rubocop:enable Metrics/MethodLength'13'
 
   def list_options
     puts "\n"
@@ -88,4 +94,29 @@ class App
     @options.each_with_index { |option, index| puts "#{index + 1} - #{option}" }
     puts "\n"
   end
+
+  def list_games
+    puts 'There are no games yet!' if @games.empty?
+    @games.each do |game|
+      puts "Multiplayer : #{game.multiplayer},
+      last date played : #{game.last_played_at},
+      publishing : #{game.publish_date}"
+    end
+  end 
+
+  def add_new_game
+    print 'It is a multiplayer game [Enter answer in format true / false]: '
+    multiplayer = gets.chomp.to_s.casecmp('true').zero?
+
+    print 'Please, enter the last date the game was played (mm-dd-yyyy)'
+    last_played_at = gets.chomp
+
+    print 'Published Date [Enter date in format (mm-dd-yyyy)]: '
+    publish_date = gets.chomp
+    return unless publish_date
+
+    @games.push(Game.new(publish_date, multiplayer, last_played_at))
+    save_games(@games)
+    puts 'Game created successfully'
+  end  
 end

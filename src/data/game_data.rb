@@ -4,10 +4,10 @@ require 'json'
 module GameData
   def read_games
     data = []
-    if File.exist?('data/games.json')
-      games_data = JSON.parse(File.read('./data/games.json'))
+    if File.exist?('./src/storage/games.json')
+      games_data = JSON.parse(File.read('./src/storage/games.json'))
       games_data.each do |game|
-        data.push(Game.new(game['multiplayer'], game['last_played_at'], game['publish_date']))
+        data.push(Game.new(game['multiplayer'], game['last_played_at'], game['publish_date']))        
       end
     end
     data
@@ -24,6 +24,6 @@ module GameData
         }
       )
     end
-    File.write('./data/games.json', JSON.generate(games_data))
+    File.write('./src/storage/games.json', JSON.generate(games_data))
   end
 end
