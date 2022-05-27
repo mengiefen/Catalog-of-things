@@ -1,33 +1,17 @@
 [
   {
     "json_class": "Book",
-    "id": 372,
+    "id": 128,
+    "publisher": "Bahran",
+    "cover_state": "Hard",
+    "date": "2022-05-27",
+    "archived": false
+  },
+  {
+    "json_class": "Book",
+    "id": 946,
     "publisher": "Menge",
-    "cover_state": "Hard",
-    "date": "2022-05-27",
-    "archived": false
-  },
-  {
-    "json_class": "Book",
-    "id": 596,
-    "publisher": "Zeg",
-    "cover_state": "Soft",
-    "date": "2022-05-27",
-    "archived": false
-  },
-  {
-    "json_class": "Book",
-    "id": 132,
-    "publisher": "Gen",
-    "cover_state": "Hard",
-    "date": "2022-05-27",
-    "archived": false
-  },
-  {
-    "json_class": "Book",
-    "id": 350,
-    "publisher": "IEEE",
-    "cover_state": "Normal",
+    "cover_state": "Amazing",
     "date": "2022-05-27",
     "archived": false
   }

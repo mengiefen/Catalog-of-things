@@ -33,7 +33,7 @@ class App
   end
 
   def exit!
-    puts 'Thank you for using this app!'
+    puts 'Thank you for using this app! 👋'
     @run_app = false
   end
 
@@ -48,6 +48,8 @@ class App
     case selected_option
     when 1
       @io.list_all_books
+      print 'Press any key to continue...'
+      gets
     when 2
       '2'
     when 3
@@ -57,7 +59,9 @@ class App
     when 5
       '5'
     when 6
-      '6'
+      @io.list_all_labels
+      print 'Press any key to continue...'
+      gets
     when 7
       '7'
     when 8

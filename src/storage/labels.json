@@ -20,6 +20,30 @@
         "cover_state": "Normal",
         "date": "2022-05-27",
         "archived": false
+      },
+      {
+        "json_class": "Book",
+        "id": 798,
+        "publisher": "Andres",
+        "cover_state": "Hard",
+        "date": "2022-05-27",
+        "archived": false
+      },
+      {
+        "json_class": "Book",
+        "id": 158,
+        "publisher": "Bahran",
+        "cover_state": "Hard",
+        "date": "2022-05-27",
+        "archived": false
+      },
+      {
+        "json_class": "Book",
+        "id": 128,
+        "publisher": "Bahran",
+        "cover_state": "Hard",
+        "date": "2022-05-27",
+        "archived": false
       }
     ]
   },
@@ -42,6 +66,38 @@
         "id": 596,
         "publisher": "Zeg",
         "cover_state": "Soft",
+        "date": "2022-05-27",
+        "archived": false
+      },
+      {
+        "json_class": "Book",
+        "id": 83,
+        "publisher": "Matt",
+        "cover_state": "Hard",
+        "date": "2022-05-27",
+        "archived": false
+      },
+      {
+        "json_class": "Book",
+        "id": 286,
+        "publisher": "Hemerson",
+        "cover_state": "Soft",
+        "date": "2022-05-27",
+        "archived": false
+      },
+      {
+        "json_class": "Book",
+        "id": 45,
+        "publisher": "Bahran",
+        "cover_state": "Amazing",
+        "date": "2022-05-27",
+        "archived": false
+      },
+      {
+        "json_class": "Book",
+        "id": 946,
+        "publisher": "Menge",
+        "cover_state": "Amazing",
         "date": "2022-05-27",
         "archived": false
       }
