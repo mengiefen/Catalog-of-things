@@ -1,6 +1,6 @@
-require_relative '../Classes/source'
-require_relative '../Classes/db'
-require_relative '../Classes/movie'
+require_relative '../classes/source'
+require_relative '../classes/db'
+require_relative '../classes/movie'
 require 'date'
 
 module Appfunctions
