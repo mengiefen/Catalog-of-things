@@ -4,19 +4,11 @@ require_relative '../classes/movie'
 require 'date'
 
 module Appfunctions
-  def valid_date?(date)
-    date_format = '%Y-%m-%d'
-    DateTime.strptime(date, date_format)
-    true
-  rescue ArgumentError
-    false
-  end
 
   def create_movie
     source = create_source
-    puts "\nWhat was the publish date of  the movie? e. g. 1996"
+    puts "\nWhat was the publish date of  the movie? e. g. [YYYY-MM-DD]"
     date = gets.chomp
-    valid_date?(date)
     puts "\nIs the movie silent?"
     puts '1 - YES'
     puts '2 - NO'
