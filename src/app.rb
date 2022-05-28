@@ -2,6 +2,8 @@ require_relative './classes/movie'
 require_relative './classes/db'
 require_relative './modules/app_module'
 require_relative './modules/io_handler'
+require_relative './classes/game'
+require_relative './classes/author'
 
 class App
   include Appfunctions
@@ -55,7 +57,7 @@ class App
     when 3
       show_movies
     when 4
-      '4'
+      @io.list_games
     when 5
       @io.list_all_genres
     when 6
@@ -63,7 +65,7 @@ class App
       print 'Press any key to continue...'
       gets
     when 7
-      '7'
+      @io.list_authors
     when 8
       show_sources
     when 9
@@ -73,14 +75,14 @@ class App
     when 11
       create_movie
     when 12
-      '13'
+      @io.add_new_game
     when 13
       @io.save
       exit!
     end
   end
   # rubocop:enable Metrics/CyclomaticComplexity
-  # rubocop:enable Metrics/MethodLength
+  # rubocop:enable Metrics/MethodLength'13'
 
   def list_options
     puts "\n"
