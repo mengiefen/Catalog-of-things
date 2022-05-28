@@ -4,8 +4,8 @@ require_relative './modules/app_module'
 require_relative './modules/io_handler'
 require_relative './classes/game'
 require_relative './classes/author'
-require_relative './data/author_data'
-require_relative './data/game_data'
+require_relative './modules/author_data'
+require_relative './modules/game_data'
 
 class App
   include Appfunctions
@@ -111,7 +111,7 @@ class App
       last date played : #{game.last_played_at},
       publishing : #{game.publish_date}"
     end
-  end 
+  end
 
   def add_new_game
     print 'It is a multiplayer game [Enter answer in format true / false]: '
@@ -136,5 +136,5 @@ class App
     @games.push(Game.new(publish_date, multiplayer, last_played_at))
     save_games(@games)
     puts 'Game created successfully'
-  end  
+  end
 end
