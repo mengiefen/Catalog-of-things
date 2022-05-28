@@ -7,6 +7,9 @@
 In this project, the console app that helps to keep a record of different types of things that somebody won: books, music albums, movies, and games.
 The data is stored in JSON files but the correspding schema is prepared with tables structure analogical to the program's class structure.
 
+## Video Description
+https://user-images.githubusercontent.com/69616245/170808251-65739934-4ed0-4641-9dd9-5f4b27644846.mp4
+
 ## How to build the "Catalog of my things" app
 
 "Catalog of my things" is a simple console app that allows users to manage collections of the things they own. It should be based on the following UML class diagram.
