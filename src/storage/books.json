@@ -1,0 +1,42 @@
+[
+  {
+    "json_class": "Book",
+    "id": 128,
+    "publisher": "Bahran",
+    "cover_state": "Hard",
+    "date": "2022-05-27",
+    "archived": false
+  },
+  {
+    "json_class": "Book",
+    "id": 946,
+    "publisher": "Menge",
+    "cover_state": "Amazing",
+    "date": "2022-05-27",
+    "archived": false
+  },
+  {
+    "json_class": "Book",
+    "id": 133,
+    "publisher": "publisher2",
+    "cover_state": "bad",
+    "date": "2022-05-27",
+    "archived": false
+  },
+  {
+    "json_class": "Book",
+    "id": 487,
+    "publisher": "publicher3",
+    "cover_state": "bad",
+    "date": "2022-05-27",
+    "archived": false
+  },
+  {
+    "json_class": "Book",
+    "id": 136,
+    "publisher": "Publisher1",
+    "cover_state": "bad",
+    "date": "2022-05-27",
+    "archived": false
+  }
+]
