@@ -1,10 +1,13 @@
+require 'json'
+require_relative '../classes/author'
+
 module AuthorsData
   def read_authors
     data = []
-    file = './data/authors.json'
+    file = './src/storage/authors.json'
     if File.exist?(file)
       JSON.parse(File.read(file)).each do |author|
-        data.push(Author.new(author['first_name'], author['last_name']))
+        data.push(Author.new(author[ 'first_name' ], author[ 'last_name' ]))
       end
     else
       File.write(file, [])
@@ -18,6 +21,16 @@ module AuthorsData
     @music_albums.each do |author|
       data.push({ first_name: author.first_name, last_name: author.last_name })
     end
-    open('./data/authors.json', 'w') { |f| f << JSON.generate(data) }
+    open('./src/storage/authors.json', 'w') { |f| f << JSON.generate(data) }
+  end
+
+  def create_author
+    puts"\nEnter the last name:"
+    lname= gets.chomp
+    puts"\nEnter the first name:"
+    fname= gets.chomp
+    data.push(Author.new(lname, fname))
+
+    puts"\nAuthor created successfully."
   end
 end

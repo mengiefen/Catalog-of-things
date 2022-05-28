@@ -10,10 +10,12 @@ require_relative './data/game_data'
 class App
   include Appfunctions
   include GameData
+  include AuthorsData
 
   def initialize
     @db = DB.new
     @games = read_games
+    @authors = read_authors
     @options = [
       'List all books',
       'List all music albums',
@@ -69,7 +71,7 @@ class App
       print 'Press any key to continue...'
       gets
     when 7
-      '7'
+      list_authors
     when 8
       show_sources
     when 9
@@ -95,6 +97,13 @@ class App
     puts "\n"
   end
 
+  def list_authors
+    puts 'There are no @authors yet!' if @music_albums.empty?
+    @authors.each do |author|
+      puts "First name: #{author.first_name}, last name : #{last.first_name}}"
+    end
+  end
+
   def list_games
     puts 'There are no games yet!' if @games.empty?
     @games.each do |game|
@@ -114,6 +123,15 @@ class App
     print 'Published Date [Enter date in format (mm-dd-yyyy)]: '
     publish_date = gets.chomp
     return unless publish_date
+
+    puts 'Choose an author: '
+    if @authors.empty?
+      create_author
+      author_index = 0
+    else
+      list_authors
+      author_index = gets.chomp.to_i
+    end
 
     @games.push(Game.new(publish_date, multiplayer, last_played_at))
     save_games(@games)
