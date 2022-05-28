@@ -53,6 +53,11 @@ To get a local copy up and running follow these simple example steps.
     -  On root directory run `chmod 755 main.rb`
     -  Then run `./main.rb` 
     -  Follow the interactive console instructions
+
+## Testing the Application
+>**Steps to test the app **
+- To run all the tests, you can open the terminal and run: `rspec .`
+- To run the test for one file run: `rspec spec/<file_name.rb>`
   
 ## Contributers
 
