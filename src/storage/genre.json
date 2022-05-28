@@ -1,3 +1,14 @@
 [
-
+  {
+    "json_class": "Genre",
+    "name": "pop",
+    "items": [
+      {
+        "json_class": "MusicAlbum",
+        "id": 158,
+        "publish_date": "2020-05-05",
+        "on_spotify": true
+      }
+    ]
+  }
 ]

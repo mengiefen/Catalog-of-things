@@ -3,40 +3,26 @@ require_relative '../classes/book'
 require_relative '../classes/item'
 require_relative '../classes/genre'
 require_relative '../classes/music_album'
-require_relative '../modules/valid_date'
+require_relative '../classes/author'
+require_relative '../classes/game'
+require_relative '../modules/author_game'
+require_relative '../modules/genre_album'
+require_relative '../modules/book_label'
 require 'json'
 
 class IoHandler
+  include AuthorsGame
+  include GenreAlbum
+  include BookLabel
+
   def initialize
     @books = []
     @labels = []
     @genre = []
     @music_album = []
+    @games = []
+    @authors = []
     load_from_storage
-  end
-
-  def add_book
-    puts 'Adding Book '
-    print 'Who is the Publisher? : '
-    publisher = gets.chomp
-    print 'Specify Book Cover State: '
-    cover_state = gets.chomp
-
-    puts 'Choose book lebel: '
-    if @labels.empty?
-      add_label
-      label_index = 0
-    else
-      list_all_labels
-      label_index = gets.chomp.to_i
-    end
-
-    book = Book.new(publisher, cover_state, rand(1..1000))
-    book.label = (@labels[label_index])
-
-    @books << book
-    puts 'Book Created Successfully ✅'
-    sleep(2)
   end
 
   def save_to_storage
@@ -44,128 +30,77 @@ class IoHandler
     File.write('./src/storage/labels.json', JSON.pretty_generate(@labels))
     File.write('./src/storage/genre.json', JSON.pretty_generate(@genre))
     File.write('./src/storage/music_album.json', JSON.pretty_generate(@music_album))
+    File.write('./src/storage/games.json', JSON.pretty_generate(@games))
+    File.write('./src/storage/authors.json', JSON.pretty_generate(@authors))
   end
 
   def load_from_storage
-    (File.exist? './src/storage/books.json') &&
-      (@books = JSON.parse(
-        File.read('./src/storage/books.json'), create_additions: true
-      ))
+    (File.exist? './src/storage/books.json') && (@books = JSON.parse(
+      File.read('./src/storage/books.json'), create_additions: true
+    ))
 
-    (File.exist? './src/storage/labels.json') &&
-      (@labels = JSON.parse(
-        File.read('./src/storage/labels.json'), create_additions: true
-      ))
+    (File.exist? './src/storage/labels.json') && (@labels = JSON.parse(
+      File.read('./src/storage/labels.json'), create_additions: true
+    ))
 
-    (File.exist? './src/storage/genre.json') &&
-      (@genre = JSON.parse(
-        File.read('./src/storage/genre.json'), create_additions: true
-      ))
+    (File.exist? './src/storage/genre.json') && (@genre = JSON.parse(
+      File.read('./src/storage/genre.json'), create_additions: true
+    ))
 
-    (File.exist? './src/storage/music_album.json') &&
-      (@music_album = JSON.parse(
-        File.read('./src/storage/music_album.json'), create_additions: true
-      ))
-  end
+    (File.exist? './src/storage/music_album.json') && (@music_album = JSON.parse(
+      File.read('./src/storage/music_album.json'), create_additions: true
+    ))
 
-  def list_all_books
-    if @books.empty?
-      puts 'No Books to Show 🚫 '
-    else
-      @books.each_with_index do |book, index|
-        puts "Book-[#{index}]: Publisher: #{book.publisher},  Cover State: #{book.cover_state}"
-      end
-    end
-  end
+    (File.exist? './src/storage/games.json') && (@games = JSON.parse(
+      File.read('./src/storage/games.json'), create_additions: true
+    ))
 
-  def list_all_labels
-    if @labels.empty?
-      puts 'No labels available'
-
-    else
-      @labels.each_with_index do |label, index|
-        puts "[#{index + 1}]: #{label.title}"
-      end
-    end
-  end
-
-  def add_label
-    puts '--- No Labels in the List, Adding New Label ---'
-    print ' Please enter the Title: '
-    title = gets.chomp
-    print 'Enter the Color: '
-    color = gets.chomp
-    @labels << Label.new(title, color, rand(1..1000))
-    puts 'Book Created Successfully ✅'
-    sleep(2)
-  end
-
-  def list_all_genres
-    puts 'Genres:'
-    return puts 'No genres to show 🚫' if @genre.empty?
-
-    @genre.each_with_index do |genre, index|
-      puts "[#{index + 1}] #{genre.name}"
-    end
-  end
-
-  def list_music_albums
-    puts 'Music Albums:'
-    return puts 'There is no music albums to show.' if @music_album.empty?
-
-    idx = 1
-    @genre.each do |genre|
-      genre.items.each do |album|
-        puts "[#{idx}] Genre:#{genre.name}, Date:#{album.publish_date}, Spotify:#{album.on_spotify}"
-        idx += 1
-      end
-    end
-  end
-
-  def add_genre
-    puts '-------  Adding Genre  -------'
-    print 'Add a new genre: '
-    name = gets.chomp
-    @genre << Genre.new(name)
-  end
-
-  def select_genre
-    if @genre.empty?
-      puts 'No genres to select 🚫'
-      puts "\n"
-      add_genre
-      genre_index = 1
-    else
-      puts '[0] Create a new genre'
-      list_all_genres
-      genre_index = gets.chomp.to_i
-      if genre_index.zero?
-        add_genre
-        puts "\n"
-        puts 'Select a genre by number:'
-        list_all_genres
-        genre_index = gets.chomp.to_i
-      end
-    end
-    genre_index
-  end
-
-  def add_music_album
-    puts '-------  Adding music album  -------'
-    publish_date = get_date('Publish Date [YYYY-MM-DD]:')
-    print 'On Spotify [y/N]:'
-    on_spotify = gets.chomp.downcase == 'y'
-    puts "\n"
-    puts 'Select a genre by number:'
-    genre_index = select_genre
-    music_album = MusicAlbum.new(rand(1..1000), publish_date, on_spotify)
-    music_album.genre = @genre[genre_index - 1]
-    puts "\n"
-    puts 'Music album created successfully ✅'
-    @music_album << music_album
+    (File.exist? './src/storage/authors.json') && (@authors = JSON.parse(
+      File.read('./src/storage/authors.json'), create_additions: true
+    ))
   end
 
   def save
     save_to_storage
+  end
+
+  def add_book
+    create_book
+  end
+
+  def list_all_books
+    list_books
+  end
+
+  def list_all_labels
+    list_labels
+  end
+
+  def add_label
+    create_label
+  end
+
+  def list_all_genres
+    list_genres
+  end
+
+  def list_music_albums
+    list_albums
+  end
+
+  def add_music_album
+    add_album
+  end
+
+  def list_authors
+    list_all_authors
+  end
+
+  def list_games
+    list_all_games
+  end
+
+  def add_new_game
+    add_game
   end
 end
