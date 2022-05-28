@@ -1,1 +1,65 @@
-[]
+[
+  {
+    "json_class": "Author",
+    "first_name": "lname1",
+    "last_name": "fname1",
+    "items": [
+      {
+        "json_class": "Game",
+        "id": 941,
+        "publish_date": "01-01-2010",
+        "multiplayer": true,
+        "last_played_at": "02-02-2020"
+      },
+      {
+        "json_class": "Game",
+        "id": 460,
+        "publish_date": "05-05-2010",
+        "multiplayer": false,
+        "last_played_at": "02-02-2020"
+      }
+    ]
+  },
+  {
+    "json_class": "Author",
+    "first_name": "lastn",
+    "last_name": "firstn",
+    "items": [
+      {
+        "json_class": "Game",
+        "id": 891,
+        "publish_date": "01-01-2010",
+        "multiplayer": false,
+        "last_played_at": "08-08-2020"
+      }
+    ]
+  },
+  {
+    "json_class": "Author",
+    "first_name": "lastname",
+    "last_name": "firstname",
+    "items": [
+      {
+        "json_class": "Game",
+        "id": 199,
+        "publish_date": "05-05-2010",
+        "multiplayer": true,
+        "last_played_at": "02-02-2020"
+      }
+    ]
+  },
+  {
+    "json_class": "Author",
+    "first_name": "name2",
+    "last_name": "name3",
+    "items": [
+      {
+        "json_class": "Game",
+        "id": 222,
+        "publish_date": "05-05-2010",
+        "multiplayer": true,
+        "last_played_at": "02-02-2020"
+      }
+    ]
+  }
+]

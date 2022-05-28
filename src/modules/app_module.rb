@@ -4,7 +4,6 @@ require_relative '../classes/movie'
 require 'date'
 
 module Appfunctions
-
   def create_movie
     source = create_source
     puts "\nWhat was the publish date of  the movie? e. g. [YYYY-MM-DD]"

@@ -1,1 +1,37 @@
-[{"multiplayer":true,"last_played_at":"01-01-2005","publish_date":"01-01-2000"}]
+[
+  {
+    "json_class": "Game",
+    "id": 941,
+    "publish_date": "01-01-2010",
+    "multiplayer": true,
+    "last_played_at": "02-02-2020"
+  },
+  {
+    "json_class": "Game",
+    "id": 460,
+    "publish_date": "05-05-2010",
+    "multiplayer": false,
+    "last_played_at": "02-02-2020"
+  },
+  {
+    "json_class": "Game",
+    "id": 891,
+    "publish_date": "01-01-2010",
+    "multiplayer": false,
+    "last_played_at": "08-08-2020"
+  },
+  {
+    "json_class": "Game",
+    "id": 199,
+    "publish_date": "05-05-2010",
+    "multiplayer": true,
+    "last_played_at": "02-02-2020"
+  },
+  {
+    "json_class": "Game",
+    "id": 222,
+    "publish_date": "05-05-2010",
+    "multiplayer": true,
+    "last_played_at": "02-02-2020"
+  }
+]
